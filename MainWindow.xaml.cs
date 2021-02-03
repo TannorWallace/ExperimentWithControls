@@ -32,7 +32,10 @@ namespace ExperimentWithControls
 
         private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
+            if (myListBox.SelectedItem is ListBoxItem listBoxItem)
+            {
+                number.Text = listBoxItem.Content.ToString();
+            }
         }
 
         private void smallSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
@@ -48,6 +51,30 @@ namespace ExperimentWithControls
         private void numberTextBox_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
             e.Handled = !int.TryParse(e.Text, out int result);
+        }
+
+        private void RadioButton_Checked(object sender, RoutedEventArgs e)
+        {
+            if (sender is RadioButton radioButton)
+            {
+                number.Text = radioButton.Content.ToString();
+            }
+        }
+
+        private void readOnlyComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (readOnlyComboBox.SelectedItem is ListBoxItem listBoxItem)
+            {
+                number.Text = listBoxItem.Content.ToString();
+            }
+        }
+
+        private void editComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (editComboBox.SelectedItem is ListBoxItem listBoxItem)
+            {
+                number.Text = listBoxItem.Content.ToString();
+            }
         }
     }
 }
